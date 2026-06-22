@@ -1,17 +1,104 @@
 {% extends "templates/login.html" %}
 
-{% block main %}
-<div class="container text-center pangeo">
-    <h1>{{ pangeo_hub_title or 'Pangeo JupyterHub' }}</h1>
-    <h2>{{ pangeo_hub_subtitle }}</h2>
-    <p>
-      {% if pangeo_welcome %}
-      {{ (pangeo_welcome | safe) }}
-      {% else %}
-      Welcome to this Pangeo JupyterHub. For more information about Pangeo,
-      visit <a href="http://pangeo.io">pangeo.io</a>.
-      {% endif %}
-    </p>
-</div>
+{% block nav_bar %}
+{% endblock %}
+
+{% block stylesheet %}
 {{ super() }}
+<link rel="stylesheet" href="{{ static_url('extra-assets/css/login.css') }}" type="text/css" />
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script src="{{ static_url('extra-assets/js/login.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+<div class="container" id="home" data-authenticator-login-url="{{ authenticator_login_url }}">
+
+  <div class="text-center">
+    <a href="https://open.jupyter.ubc.ca/">
+      <img src="{{ static_url('extra-assets/images/ubc-logo.png') }}"
+           alt="The University of British Columbia"
+           id="ubc-logo"
+           title="UBC logo" />
+    </a>
+    <div id="operated-by">
+      Operated by the <a href="https://ltic.ubc.ca/">Learning Technology Innovation Centre</a>
+    </div>
+  </div>
+
+  <div class="login-container text-center">
+    <a role="button" id="login-button" class="btn btn-jupyter btn-lg" href="{{ authenticator_login_url }}">
+      Log in to continue
+    </a>
+  </div>
+
+  <div class="col-md-8 col-md-offset-2 details">
+    <div class="col-md-12">
+      <big class="details-welcome lead">
+        Welcome to <strong>Open Jupyter</strong>, UBC's shared computational environment for teaching and research.
+      </big>
+    </div>
+  </div>
+
+  <div class="col-md-8 col-md-offset-2 questions">
+
+    <div>
+      <h4>What is a Jupyter Notebook?</h4>
+      Jupyter Notebook is an open-source web application that allows you to create
+      and share documents containing live code, equations, visualizations, and narrative text. Common uses include
+      data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
+    </div>
+
+    <div>
+      <h4>What is JupyterHub?</h4>
+      JupyterHub brings the power of notebooks to groups of users. It gives students and researchers access to
+      computational environments and resources without requiring local installation or maintenance. All computation
+      runs on shared, centrally managed infrastructure.
+    </div>
+
+    <div>
+      <h4>Who can use this service?</h4>
+      Open Jupyter is available to UBC students, instructors and staff.
+    </div>
+
+    <div>
+      <h4>How do I distribute course content to students?</h4>
+      We recommend using <a href="https://jupyterhub.github.io/nbgitpuller/">nbgitpuller</a> to distribute content
+      to students. You can construct an <a href="https://jupyterhub.github.io/nbgitpuller/link">nbgitpuller link</a>
+      and share it with your class. When students click it, the course content will be pulled directly into their
+      home directories.
+    </div>
+
+    <div>
+      <h4>What packages &amp; libraries are available?</h4>
+      Several notebook environments are available depending on your course profile, including Python (SciPy),
+      TensorFlow, Julia, and R/RStudio. For a full list of installed packages in each environment, see the
+      <a href="https://github.com/ubc/jupyter-images">UBC Jupyter Images repository</a>.
+    </div>
+
+    <div>
+      <h4>Can I install my own packages?</h4>
+      Yes! In a Jupyter Notebook, use <code>!pip install package-name</code> for Python or
+      <code>install.packages()</code> for R. Note that user-installed packages do not persist across server
+      restarts — add the install command to the top of your notebook so it runs each session.
+    </div>
+
+    <div>
+      <h4>Can a package be installed for all my students?</h4>
+      Most likely! Contact <a href="https://lthub.ubc.ca/support/lt-hub/">LTIC support</a> with your request and we can
+      add it to the course image for the next deployment.
+    </div>
+
+    <div>
+      <h4>I have more questions!</h4>
+      Reach out to <a href="https://lthub.ubc.ca/support/lt-hub/">LTIC support</a>,
+      email us at <a href="mailto:lt.hub@ubc.ca">lt.hub@ubc.ca</a>,
+      or contact your course instructor.
+    </div>
+
+  </div>
+
+</div>
 {% endblock %}
