@@ -1,3 +1,17 @@
+#ubc-header {
+    background-color: #002145;
+    width: 100%;
+    padding: 24px 0;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#ubc-logo {
+    max-width: 1000px;
+    width: 90%;
+    height: auto;
+}
+
 #home {
     margin-top: 32px;
 }
@@ -11,28 +25,18 @@
 }
 
 #operated-by {
-    margin-top: 8px;
-    color: darkgrey;
+    margin-top: 10px;
+    color: white;
 }
 
 #operated-by a {
-    color: grey;
+    color: white;
     font-weight: bold;
 }
 
 [data-bs-theme="dark"] #operated-by a {
-    color: lightgray;
+    color: white;
     font-weight: bold;
-}
-
-#ubc-logo {
-    max-width: 400px;
-    height: auto;
-}
-
-#jupyterhub-logo img.jpy-logo {
-    height: 60px;
-    width: auto;
 }
 
 .details {

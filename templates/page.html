@@ -3,15 +3,18 @@
 {% block stylesheet %}
 {{ super() }}
 <link rel="stylesheet" href="{{ static_url('extra-assets/css/login.css') }}" type="text/css" />
+<link rel="stylesheet" href="{{ static_url('extra-assets/css/page.css') }}" type="text/css" />
 {% endblock %}
 
 {% block logo %}
 <span id="jupyterhub-logo" class="pull-left">
     <a href="{{ logo_url or base_url }}">
-        <img src="{{ static_url('extra-assets/images/ubc-logo.png') }}"
+        <img src="{{ static_url('extra-assets/images/ubc-nav-logo.png') }}"
              alt="The University of British Columbia"
-             class="jpy-logo"
-             title="Home" />
+             class="jpy-logo logo-dark" />
+        <img src="{{ static_url('extra-assets/images/ubc-white-logo.png') }}"
+             alt="The University of British Columbia"
+             class="jpy-logo logo-light" />
     </a>
 </span>
 {% endblock %}

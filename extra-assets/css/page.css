@@ -1,0 +1,12 @@
+/* light mode - show dark logo */
+#jupyterhub-logo img.jpy-logo {
+    height: 100px;
+    width: auto;
+}
+
+#jupyterhub-logo .logo-dark { display: inline; }
+#jupyterhub-logo .logo-light { display: none; }
+
+/* dark mode - show white logo */
+[data-bs-theme="dark"] #jupyterhub-logo .logo-dark { display: none; }
+[data-bs-theme="dark"] #jupyterhub-logo .logo-light { display: inline; }
