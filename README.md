@@ -8,13 +8,16 @@ Each HTML file overrides the corresponding default in [JupyterHub's template dir
 
 ```
 templates/
-  login.html       # Landing/login page
-  page.html        # Nav bar logo override (all post-login pages)
+  login.html              # Landing/login page
+  page.html               # Nav bar logo override (all post-login pages)
 extra-assets/
   css/
-    login.css      # Custom styles
+    login.css             # Styles for the landing/login page
+    page.css              # Styles for post-login pages (nav bar logo light/dark mode)
   images/
-    ubc-logo.png   # UBC logo
+    ubc-white-logo.png    # White UBC full signature logo — used on the landing page blue header
+    ubc-nav-blue-logo.png # Dark blue UBC logo — used in nav bar in light mode
+    ubc-nav-white-logo.png # White UBC logo — used in nav bar in dark mode
 ```
 
 ## Deployment
@@ -27,13 +30,13 @@ Add the following to your Z2JH `values.yaml`:
 hub:
   initContainers:
     - name: templates-clone
-      image: alpine/git
+      image: 032401129069.dkr.ecr.ca-central-1.amazonaws.com/docker-hub/alpine/git:latest
       args:
         - clone
         - --depth=1
         - --single-branch
         - --
-        - https://github.com/ubc/jupyter-homepage
+        - https://github.com/ubc/jupyterhub-homepage
         - /srv/repo
       securityContext:
         runAsUser: 1000
@@ -56,9 +59,11 @@ hub:
       subPath: extra-assets
 
   extraConfig:
-    custom-templates: |
+    01-custom-templates: |
       c.JupyterHub.template_paths = ['/usr/local/share/jupyterhub/custom_templates/']
 ```
+
+> **Note:** `alpine/git` is pulled via the ECR Docker Hub pull-through cache (`docker-hub/*`). Ensure the image is available in your ECR before deploying.
 
 ## Acknowledgements
 
