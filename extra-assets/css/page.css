@@ -8,5 +8,5 @@
 #jupyterhub-logo .logo-light { display: none; }
 
 /* dark mode - show white logo */
-[data-bs-theme="dark"] #jupyterhub-logo .logo-dark { display: none; }
-[data-bs-theme="dark"] #jupyterhub-logo .logo-light { display: inline; }
+html[data-bs-theme="dark"] #jupyterhub-logo .logo-dark { display: none; }
+html[data-bs-theme="dark"] #jupyterhub-logo .logo-light { display: inline; }
