@@ -65,6 +65,33 @@ hub:
 
 > **Note:** `alpine/git` is pulled via the ECR Docker Hub pull-through cache (`docker-hub/*`). Ensure the image is available in your ECR before deploying.
 
-## Acknowledgements
+## Maintenance Banner
+The login and post-login pages support an optional full-width maintenance banner. It is controlled entirely within this repo — no Helm changes required, and restarting the hub pod does **not** affect running student pods.
 
+### Activating the banner
+1. Open `templates/page.html` and find the `{% block announcement %}` block.
+2. Remove the `{# ... #}` Jinja2 comment tags wrapping the banner `<div>` to activate it.
+3. Update the message text as needed.
+4. Commit and push.
+5. Restart the hub pod to pull the latest templates:
+```bash
+   kubectl rollout restart deployment/hub -n default
+   kubectl rollout status deployment/hub -n default
+```
+
+The banner will appear at the top of all pages (login, home, spawn, etc.).
+
+### Deactivating the banner
+1. Wrap the banner `<div>` back in `{# ... #}` comment tags in `templates/page.html`.
+2. Commit and push.
+3. Restart the hub pod:
+```bash
+   kubectl rollout restart deployment/hub -n <namespace>
+   kubectl rollout status deployment/hub -n <namespace>
+```
+
+### Banner styling
+Banner styles are defined in `extra-assets/css/page.css` under the `#maintenance-banner` selector. Both light and dark mode are supported.
+
+## Acknowledgements
 This repository is forked from [pangeo-custom-jupyterhub-templates](https://github.com/pangeo-data/pangeo-custom-jupyterhub-templates). The landing page design and structure is inspired by [2i2c's default-hub-homepage](https://github.com/2i2c-org/default-hub-homepage), as adopted by [UC Berkeley](https://github.com/ucbds-infra/datahub-homepage) and the [University of Toronto](https://github.com/2i2c-org/default-hub-homepage).
