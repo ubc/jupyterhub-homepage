@@ -1,6 +1,6 @@
 /* light mode - show dark logo */
 #jupyterhub-logo img.jpy-logo {
-    height: 80px;
+    height: 50px;
     width: auto;
 }
 
