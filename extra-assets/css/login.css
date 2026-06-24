@@ -76,3 +76,42 @@
     color: darkgrey;
     text-decoration: underline;
 }
+
+/* Interface icons (Jupyter / Posit) */
+.interface-icons {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.interface-icons a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #002145;
+}
+
+.interface-icons a:hover {
+    opacity: 0.75;
+}
+
+.interface-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.interface-icons p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #002145;
+}
+
+[data-bs-theme="dark"] .interface-icons a,
+[data-bs-theme="dark"] .interface-icons p {
+    color: lightgray;
+}
