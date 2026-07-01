@@ -20,6 +20,20 @@ extra-assets/
     ubc-nav-white-logo.png # White UBC logo — used in nav bar in dark mode
 ```
 
+## UBC Common Look and Feel (CLF)
+
+The landing page follows UBC's [CLF](https://clf.ubc.ca/) visually — signature masthead,
+steel-blue unit-identifier band (`#ubc7-unit-identifier`), and the two-tier UBC footer —
+using **our own CSS** in `extra-assets/css/login.css`, styled with UBC Blue (`#002145`) and
+the Arial/Helvetica CLF font stack.
+
+We deliberately **do not** load UBC's official CLF package from `cdn.ubc.ca`. That package is
+**Bootstrap v2.3.2** with global, unscoped selectors (`body`, `a`, `h1`–`h6`, `.container`,
+`.row`, `.col-*`). JupyterHub runs on **Bootstrap 5**, so including the CLF stylesheet would
+redefine those globals and break the hub's UI. Replicating the CLF with scoped custom CSS is
+UBC's recommended path for sites not built on the CLF's Bootstrap 2 base. If you ever need the
+literal package, isolate it behind an `<iframe>` — a plain `<link>` cannot be scoped.
+
 ## Deployment
 
 Templates are loaded into the JupyterHub pod at startup via a Kubernetes `initContainer` that clones this repo. The cloned content is mounted into the hub container via a shared `emptyDir` volume.

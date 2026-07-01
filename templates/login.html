@@ -17,99 +17,117 @@
 <div class="container-fluid" id="home" data-authenticator-login-url="{{ authenticator_login_url }}">
 
 <div id="ubc-header">
-    <a href="https://www.ubc.ca">
-      <img src="{{ static_url('extra-assets/images/ubc-white-logo.png') }}"
-           alt="The University of British Columbia"
-           id="ubc-logo" />
-    </a>
+    <div class="container">
+      <a href="https://www.ubc.ca" id="ubc-logo-link">
+        <img src="{{ static_url('extra-assets/images/ubc-white-logo.png') }}"
+             alt="The University of British Columbia"
+             id="ubc-logo" />
+      </a>
+    </div>
   </div>
 
-  <div id="operated-by">
-    Operated by the <a href="https://ltic.ubc.ca/">Learning Technology Innovation Centre</a>
+  <div id="ubc-unit-band">
+    <div class="container">
+      <span id="ubc7-unit-identifier">
+        <a href="https://ltic.ubc.ca/">Learning Technology Innovation Centre (LTIC)</a>
+      </span>
+    </div>
   </div>
 
   <div class="container">
 
-    <div class="login-container text-center">
-      <a role="button" id="login-button" class="btn btn-jupyter btn-lg" href="{{ authenticator_login_url }}">
-        Log in to continue
-      </a>
-    </div>
+    <div class="hero">
+      <h1 class="hero-title">Welcome to Jupyter&nbsp;Open</h1>
+      <p class="hero-subtitle">
+        UBC's version of JupyterHub — a computing environment with a standard set of tools
+        and libraries for computational assignments, data analysis, and programming.
+      </p>
 
-    <div class="col-md-8 col-md-offset-2 details">
-      <div class="col-md-12">
-        <big class="details-welcome lead">
-          Welcome to <strong>Open Jupyter</strong>, UBC's shared computational environment for teaching and research.
-        </big>
+      <div class="login-container">
+        <a role="button" id="login-button" class="btn btn-jupyter btn-lg" href="{{ authenticator_login_url }}">
+          Log in with your CWL
+        </a>
+      </div>
+
+      <!-- Interface icons -->
+      <div class="interface-icons">
+        <span class="interface-icons-label">Powered by</span>
+        <a href="https://jupyter.org" target="_blank" rel="noopener">
+          <img src="{{ static_url('extra-assets/images/jupyter-logo.svg') }}"
+               alt="Jupyter" class="interface-logo" />
+        </a>
       </div>
     </div>
 
-    <!-- Interface icons -->
-    <div class="col-md-8 col-md-offset-2 interface-icons">
-      <a href="https://jupyter.org" target="_blank" rel="noopener">
-        <img src="{{ static_url('extra-assets/images/jupyter-logo.svg') }}"
-             alt="Jupyter" class="interface-logo" />
-      </a>
-      <a href="https://posit.co" target="_blank" rel="noopener">
-        <img src="{{ static_url('extra-assets/images/rstudio-logo.svg') }}"
-             alt="RStudio" class="interface-logo" />
-      </a>
-    </div>
-
-    <div class="col-md-8 col-md-offset-2 questions">
+    <div class="col-md-12 questions">
 
       <div>
-        <h4>What is a Jupyter Notebook?</h4>
-        Jupyter Notebook is an open-source web application that allows you to create
-        and share documents containing live code, equations, visualizations, and narrative text. Common uses include
-        data cleaning and transformation, numerical simulation, statistical modeling, data visualization, and machine learning.
+        <h4>What is Jupyter Open?</h4>
+        Jupyter Open is UBC's version of JupyterHub — a web-based, high-performance computational
+        workspace offering &ldquo;notebooks&rdquo; where students, instructors, and researchers can
+        collaborate on shared data and develop related resources, visualizations, and computer-generated
+        figures. It provides a computing environment with a standard set of tools and libraries suitable
+        for computational assignments, data analysis, and programming.
       </div>
 
       <div>
-        <h4>What is JupyterHub?</h4>
-        JupyterHub brings the power of notebooks to groups of users. It gives students and researchers access to
-        computational environments and resources without requiring local installation or maintenance. All computation
-        runs on shared, centrally managed infrastructure.
+        <h4>What is a Jupyter notebook?</h4>
+        A Jupyter notebook is an interactive document that combines narrative text with live code,
+        equations, computational output, visualizations, and multimedia. Common uses include data
+        cleaning and transformation, numerical simulation, statistical modeling, data visualization,
+        and machine learning.
       </div>
 
       <div>
-        <h4>Who can use this service?</h4>
-        Open Jupyter is available to UBC students, instructors and staff.
+        <h4>Who can use Jupyter Open, and how do I log in?</h4>
+        Jupyter Open is available to UBC students, instructors, and researchers. Log in with your UBC
+        Campus-Wide Login (CWL) — no setup or request is required, and you and your students can start
+        using it immediately.
       </div>
 
       <div>
-        <h4>How do I distribute course content to students?</h4>
-        We recommend using <a href="https://jupyterhub.github.io/nbgitpuller/">nbgitpuller</a> to distribute content
-        to students. You can construct an <a href="https://jupyterhub.github.io/nbgitpuller/link">nbgitpuller link</a>
-        and share it with your class. When students click it, the course content will be pulled directly into their
-        home directories.
-      </div>
-
-      <div>
-        <h4>What packages &amp; libraries are available?</h4>
-        Several notebook environments are available depending on your course profile, including Python (SciPy),
-        TensorFlow, Julia, and R/RStudio. For a full list of installed packages in each environment, see the
-        <a href="https://github.com/ubc/jupyter-images">UBC Jupyter Images repository</a>.
+        <h4>What languages and packages are available?</h4>
+        Jupyter Open runs a customized version of the Jupyter Notebook Data Science stack (Docker
+        Stacks), with kernels for <strong>Python</strong>, <strong>R</strong>, and
+        <strong>Julia</strong>. Markdown is supported for narrative text. For the full list of
+        installed packages, see the <a href="https://github.com/ubc/jupyter-images">UBC Jupyter Images
+        repository</a>.
       </div>
 
       <div>
         <h4>Can I install my own packages?</h4>
-        Yes! In a Jupyter Notebook, use <code>!pip install package-name</code> for Python or
-        <code>install.packages()</code> for R. Note that user-installed packages do not persist across server
-        restarts — add the install command to the top of your notebook so it runs each session.
+        Yes. In a notebook, use <code>!pip install package-name</code> for Python or
+        <code>install.packages()</code> for R. User-installed packages do not persist across server
+        restarts, so add the install command to the top of your notebook. To have a package added to
+        the standard image, <a href="https://lthub.ubc.ca/support/lt-hub/#contact-info">contact the
+        LT Hub</a>.
       </div>
 
       <div>
-        <h4>Can a package be installed for all my students?</h4>
-        Most likely! Contact <a href="https://lthub.ubc.ca/support/lt-hub/">LTIC support</a> with your request and we can
-        add it to the course image for the next deployment.
+        <h4>What are the computing specifications?</h4>
+        Each server is allocated 0.5–1 CPU core, 2–4&nbsp;GB of RAM, and 10&nbsp;GB of persistent
+        storage.
       </div>
 
       <div>
-        <h4>I have more questions!</h4>
-        Reach out to <a href="https://lthub.ubc.ca/support/lt-hub/">LTIC support</a>,
-        email us at <a href="mailto:lt.hub@ubc.ca">lt.hub@ubc.ca</a>,
-        or contact your course instructor.
+        <h4>Instructors: how do I share notebooks with my students?</h4>
+        The simplest way is to download your notebook (<code>.ipynb</code>) and upload it to Canvas
+        for students to download and open in Jupyter Open. You can also use a UBC GitHub repository
+        with <a href="https://lthub.ubc.ca/guides/github-instructor-guide/">NBGitPuller</a>, a
+        JupyterHub extension that lets students clone a GitHub repository into their Jupyter Open
+        server. See the <a href="https://lthub.ubc.ca/guides/jupyterhub-instructor-guide/">JupyterHub
+        Instructor Guide</a> for step-by-step instructions.
+      </div>
+
+      <div>
+        <h4>Where can I get help?</h4>
+        Instructors can find detailed instructions in the
+        <a href="https://lthub.ubc.ca/guides/jupyterhub-instructor-guide/">JupyterHub Instructor Guide</a>.
+        For technical support, contact your faculty's
+        <a href="https://lthub.ubc.ca/support/instructional-units/">Instructional Support Unit</a> first,
+        then the LT Hub — call 604 827 4775, email
+        <a href="mailto:lt.hub@ubc.ca">lt.hub@ubc.ca</a>, or visit the
+        <a href="https://lthub.ubc.ca/dropin">LT Hub online</a>.
       </div>
 
     </div>
@@ -117,4 +135,84 @@
   </div>
 
 </div>
+
+<footer id="ubc-footer">
+
+  <!-- Grey band: operating-unit info + licensing -->
+  <div class="ubc-footer-unit">
+    <div class="container">
+      <div class="ubc-footer-unit-info">
+        <p class="ubc-unit-name">Learning Technology Innovation Centre (LTIC)</p>
+        <p class="ubc-unit-address">
+          University Services Building<br />
+          1170 &ndash; 2329 West Mall<br />
+          Vancouver, BC Canada V6T 1Z4<br />
+          Website <a href="https://ltic.ubc.ca/">ltic.ubc.ca</a>
+        </p>
+        <p class="ubc-back-to-top"><a href="#home">Back to top &#94;</a></p>
+      </div>
+
+      <div class="ubc-footer-license">
+        <p>
+          Except where otherwise noted, this website is licensed under a
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons
+          Attribution-ShareAlike 4.0 International License</a>. All photographs and
+          logos are excluded from this CC license.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dark-blue band: UBC global footer -->
+  <div class="ubc-footer-global">
+    <div class="container">
+      <div class="ubc-global-cols">
+        <div class="ubc-global-brand">
+          <a href="https://www.ubc.ca">
+            <img src="{{ static_url('extra-assets/images/ubc-white-logo.png') }}"
+                 alt="The University of British Columbia" class="ubc-footer-logo" />
+          </a>
+        </div>
+
+        <div class="ubc-global-col">
+          <h3>About UBC</h3>
+          <ul>
+            <li><a href="https://www.ubc.ca/contact.html">Contact UBC</a></li>
+            <li><a href="https://www.ubc.ca/about/">About the University</a></li>
+            <li><a href="https://news.ubc.ca/">News</a></li>
+            <li><a href="https://www.ubc.ca/events/">Events</a></li>
+            <li><a href="https://hr.ubc.ca/careers-and-job-postings">Careers</a></li>
+            <li><a href="https://give.ubc.ca/">Make a Gift</a></li>
+            <li><a href="https://www.ubc.ca/search/">Search UBC.ca</a></li>
+          </ul>
+        </div>
+
+        <div class="ubc-global-col">
+          <h3>UBC Campuses</h3>
+          <ul>
+            <li><a href="https://www.ubc.ca/our-campuses/vancouver.html">Vancouver Campus</a></li>
+            <li><a href="https://ok.ubc.ca/">Okanagan Campus</a></li>
+          </ul>
+          <h3>UBC Sites</h3>
+          <ul>
+            <li><a href="https://robsonsquare.ubc.ca/">Robson Square</a></li>
+            <li><a href="https://thecdm.ca/">Centre for Digital Media</a></li>
+            <li><a href="https://www.med.ubc.ca/">Faculty of Medicine Across BC</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ubc-footer-legal">
+        <ul class="ubc-footer-links">
+          <li><a href="https://srs.ubc.ca/health-safety/emergency-management/emergency-procedures/">Emergency Procedures</a></li>
+          <li><a href="https://www.ubc.ca/legal/terms-of-use.html">Terms of Use</a></li>
+          <li><a href="https://www.ubc.ca/legal/copyright.html">Copyright</a></li>
+          <li><a href="https://www.ubc.ca/legal/accessibility.html">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</footer>
 {% endblock %}
