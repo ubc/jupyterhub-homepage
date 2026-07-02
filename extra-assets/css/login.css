@@ -223,7 +223,10 @@
     font-family: var(--clf-font);
 }
 
-#ubc-footer a {
+/* Blue accent links belong to the grey band only. Scoping this to
+   .ubc-footer-unit (class) instead of #ubc-footer (id) keeps the id selector
+   from overriding the light link colours in the dark-blue global band below. */
+.ubc-footer-unit a {
     color: var(--ubc-blue-accent);
 }
 
